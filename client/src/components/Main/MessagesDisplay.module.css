@@ -14,16 +14,21 @@
 }
 
 .messages {
+ display: flex;
+ flex-direction: column;
  background-color: #fff;
  height: 100%;
  padding: 1rem;
 }
 
 .message {
- background-color: rgb(161, 143, 143);
  display: inline-block;
+ /* min-width: 2rem;
+ max-width: 4rem; */
  padding: 0.35rem 0.75rem;
+ margin-bottom: 0.5rem;
  border-radius: 12px;
+ background-color: rgb(161, 143, 143);
  color: rgb(255, 254, 254);
 }
 
