@@ -19,9 +19,7 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
  console.log('user connected: ' + socket.id)
 
- // socket.on('connect', socket => {
-
- // })
+ 
 
  socket.on('send-msg', (data) => {
   console.log(data)

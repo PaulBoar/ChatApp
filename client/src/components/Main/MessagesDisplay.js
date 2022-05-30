@@ -16,29 +16,40 @@ function MessagesDisplay(props) {
   const [recivedList, setRecivedList] = useState([]);
 
   useEffect(() => {
-    console.log(props.message);
-    setMsgList((prevList) => [...prevList, props.message]);
+    if (props.message) {
+      setMsgList((prevList) => [...prevList, props.message]);
+    }
   }, [props.message]);
+
   // useEffect(() => {
-  //   setMsgList((prevList) => [
-  //     ...prevList,
-  //     { name: recivedMsg, type: 'recived' },
-  //   ]);
+  //   if (recivedMsg) {
+  //     setMsgList((prevList) => [
+  //       ...prevList,
+  //       { name: recivedMsg, type: 'recived' },
+  //     ]);
+  //   }
   // }, [recivedMsg]);
 
   console.log(msgList);
 
-  useEffect(() => {
-    socket.on('recive-msg', (data) => {
-      setRecivedMessage({ name: data.name, type: 'send' });
-    });
-  }, [socket]);
+  // useEffect(() => {
+  //   socket.on('recive-msg', (data) => {
+      
+  //     setRecivedMessage({ name: data.name, type: 'recived' });
+  //     if (recivedMsg) {
+  //       setMsgList((prevList) => [...prevList, recivedMsg]);
+  //     }
+  //   });
+  // }, [socket]);
 
   useEffect(() => {
     socket.on('connect', () => {
       setId(socket.id);
     });
   }, [socket]);
+
+  const chatClass =
+    recivedMsg.type === 'send' ? 'classes.message' : 'classes.recived';
 
   return (
     <div className={classes.display}>

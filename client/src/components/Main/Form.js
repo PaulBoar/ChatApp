@@ -4,7 +4,6 @@ import io from 'socket.io-client';
 import classes from './Form.module.css';
 
 const socket = io.connect('http://localhost:3001');
-export const MsgCtx = React.createContext();
 
 function Form(props) {
   const [inputMsg, setInputMsg] = useState('');
