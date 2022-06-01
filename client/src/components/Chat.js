@@ -28,14 +28,16 @@ function Chat({ socket, name, room }) {
     })
   }, [socket])
 
+  
+
   return (
     <div className={classes.container}>
       <div className={classes['chat-header']}>
         <p>Live Chat</p>
       </div>
       <div className={classes['chat-body']}>
-      {messageList.map(message => {
-        return <div key={message.date}>{message.message}</div>
+      {messageList.map((messageData, id) => {
+        return <div key={id} >{messageData.message}</div>
       })}
       </div>
       <div className={classes['chat-footer']}>

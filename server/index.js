@@ -19,16 +19,21 @@ const io = new Server(server, {
 io.on('connection', (socket) => {
   console.log('user connected: ' + socket.id);
 
-  socket.on('join', (data) => {
+  socket.on('join_room', (data) => {
     socket.join(data);
     console.log(`user with id ${socket.id} joined the room ${data}`);
   });
 
+  socket.on('join_global', data => {
+    socket.join(data)
+    console.log(`user id ${socket.id} joined global chat`)
+  })
+
   socket.on('send', (data) => {
-    if (!data.room) {
-      socket.broadcast.emit('receive', data);
+    if (data.room === 'global') {
+      socket.to('global').emit('receive', data);
       console.log(`GLOBAL`);
-    } else if (data.room !== '') {
+    } else  {
       console.log(`${data.author} sent ${data.message} at ${data.date}`);
       socket.to(data.room).emit('receive', data);
     }

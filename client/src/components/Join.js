@@ -9,15 +9,22 @@ function Join({ socket, onLogIn }) {
   const joinRoom = () => {
 
     if (name && room) {
-      socket.emit('join', room);
+      socket.emit('join_room', room);
     }
     // if (name && !room) {
     //   socket.emit('join', name)
     // }
     onLogIn(name, room);
-    // setRoom('');
-    // setName('');
+    setRoom('');
+    setName('');
   };
+
+  const joinGlobal = () => {
+    if (name) {
+      socket.emit('join_global', name)
+    }
+    onLogIn(name)
+  }
 
   return (
     <div className={classes.container}>
@@ -59,7 +66,7 @@ function Join({ socket, onLogIn }) {
           <button
             className={`${classes['chat-btn']} ${classes.btn}`}
             type='button'
-            onClick={joinRoom}
+            onClick={joinGlobal}
           >
             Join General Chat
           </button>

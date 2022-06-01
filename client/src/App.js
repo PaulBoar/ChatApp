@@ -13,7 +13,7 @@ function App() {
   const [userName, setUserName] = useState('');
   const [room, setRoom] = useState('');
 
-  const handleLogIn = (name, room) => {
+  const handleLogIn = (name, room = 'global') => {
     setUserName(name);
     setRoom(room);
   };
