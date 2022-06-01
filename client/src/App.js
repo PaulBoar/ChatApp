@@ -1,27 +1,34 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import Join from './components/Join';
+import Chat from './components/Chat';
 import './App.css';
 
-import Header from './components/Header/Header';
-import Main from './components/Main/Main';
-import Form from './components/Main/Form'
-import MessagesDisplay from './components/Main/MessagesDisplay'
+import io from 'socket.io-client';
 
+const socket = io.connect('http://localhost:3001');
 
 function App() {
-  const [msg, setMsg] = useState()
+  const [userName, setUserName] = useState('');
+  const [room, setRoom] = useState('');
 
-  const handleMsg = (msg) => {
-    setMsg(msg)
-  }
-
+  const handleLogIn = (name, room) => {
+    setUserName(name);
+    setRoom(room);
+  };
 
   return (
-    <div className='app'>
-    <Header /> <br/>
-    <MessagesDisplay message={msg}/>
-    <Form getMsg={handleMsg} />
-    </div>
+    <>
+      <Router>
+         <Routes>
+           <Route path='/' exact element={<Join socket={socket} onLogIn={handleLogIn}/>} />
+          <Route path='/chat' exact element={<Chat socket={socket} name={userName} room={room} />} />
+         </Routes>
+       </Router>
+      {/* <Join socket={socket} onLogIn={handleLogIn} />
+      <Chat socket={socket} name={userName} room={room} /> */}
+    </>
   );
 }
 
