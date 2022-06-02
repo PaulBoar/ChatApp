@@ -10,17 +10,15 @@ function Join({ socket, onLogIn }) {
 
     if (name && room) {
       socket.emit('join_room', room);
+      onLogIn(name, room);
+      setRoom('');
+      setName('');
     }
-    // if (name && !room) {
-    //   socket.emit('join', name)
-    // }
-    onLogIn(name, room);
-    setRoom('');
-    setName('');
+ 
   };
 
   const joinGlobal = () => {
-    if (name) {
+    if (name && !room) {
       socket.emit('join_global', name)
     }
     onLogIn(name)

@@ -25,12 +25,12 @@ io.on('connection', (socket) => {
   });
 
   socket.on('join_global', data => {
-    socket.join(data)
-    console.log(`user id ${socket.id} joined global chat`)
+    socket.join('global')
+    console.log(`${data} user id ${socket.id} joined global chat`)
   })
 
   socket.on('send', (data) => {
-    if (data.room === 'global') {
+    if (data.room === 'global' || data.room === '') {
       socket.to('global').emit('receive', data);
       console.log(`GLOBAL`);
     } else  {

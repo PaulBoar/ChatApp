@@ -28,7 +28,27 @@
   padding: 1rem;
   height: 80%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
+
+.chat-body::-webkit-scrollbar {
+  width: 12px;
+}
+
+.chat-body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+.chat-body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(67, 170, 213, 0.7);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+​
 
 .chat-footer {
   display: flex;
@@ -61,11 +81,15 @@
 
 .message {
   color: white;
+  padding: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
 }
 
 #you {
   align-self: flex-end;
   background-color: rgb(33, 112, 177);
+  
 }
 
 #other {

@@ -20,7 +20,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* background-color: #444; */
 }
 
 .inner-container input {
@@ -28,9 +27,15 @@
   padding: 0.5rem;
   border-radius: 8px;
 }
+
+.error-input {
+  background-color: rgba(180, 58, 58, 0.4);
+}
+
 .inner-container h1 {
   align-self: center;
 }
+
 .inner-container p {
   align-self: center;
 }
