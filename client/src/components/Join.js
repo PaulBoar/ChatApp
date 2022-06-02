@@ -16,8 +16,8 @@ function Join({ socket, onLogIn }) {
   const joinGlobal = () => {
     if (name && !room) {
       socket.emit('join_global', name)
+      onLogIn(name)
     }
-    onLogIn(name)
   }
 
   return (

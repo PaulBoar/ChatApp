@@ -33,8 +33,8 @@ function Chat({ socket, name, room }) {
   }, [socket]);
 
   useEffect(() => {
-    scrollMsgs.current?.scrollIntoView()
-  }, [messageList])
+    scrollMsgs.current?.scrollIntoView();
+  }, [messageList]);
 
   return (
     <div className={classes.container}>
@@ -47,11 +47,18 @@ function Chat({ socket, name, room }) {
             name === messageData.author ? `${classes.you}` : `${classes.other}`;
           return (
             <div key={index} id={classInput} className={classes.message}>
-              {messageData.message}
+              <div>
+                <div className={classes['message-content']}>
+                  {messageData.message}
+                </div>
+                <div className={classes['message-info']}>
+                  {messageData.date}
+                </div>
+              </div>
             </div>
           );
         })}
-        <div ref={scrollMsgs}/>
+        <div ref={scrollMsgs} />
       </div>
       <div className={classes['chat-footer']}>
         <input

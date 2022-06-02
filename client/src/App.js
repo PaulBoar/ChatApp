@@ -26,8 +26,6 @@ function App() {
           <Route path='/chat' exact element={<Chat socket={socket} name={userName} room={room} />} />
          </Routes>
        </Router>
-      {/* <Join socket={socket} onLogIn={handleLogIn} />
-      <Chat socket={socket} name={userName} room={room} /> */}
     </>
   );
 }

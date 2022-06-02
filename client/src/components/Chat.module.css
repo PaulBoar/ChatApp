@@ -80,19 +80,34 @@
 }
 
 .message {
+  display: flex;
+  height: auto;
+  
+}
+
+.message-content {
+  display: flex;
   color: white;
   padding: 0.5rem;
-  margin-bottom: 0.75rem;
-  border-radius: 8px;
+  border-radius: 16px;
+}
+
+.message-info {
+  display: flex;
+  font-size: 0.75rem;
+  background-color: transparent;
 }
 
 #you {
   align-self: flex-end;
+}
+
+#you .message-content {
   background-color: rgb(33, 112, 177);
   
 }
 
-#other {
+#other .message-content {
   align-self: flex-start;
   background-color: rgb(6, 163, 87);
 }
