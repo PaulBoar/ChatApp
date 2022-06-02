@@ -7,14 +7,10 @@ function Join({ socket, onLogIn }) {
   const [room, setRoom] = useState('');
 
   const joinRoom = () => {
-
     if (name && room) {
       socket.emit('join_room', room);
       onLogIn(name, room);
-      setRoom('');
-      setName('');
     }
- 
   };
 
   const joinGlobal = () => {

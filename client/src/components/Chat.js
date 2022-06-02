@@ -43,7 +43,6 @@ function Chat({ socket, name, room }) {
       </div>
       <div className={classes['chat-body']}>
         {messageList.map((messageData, index) => {
-          console.log(messageData.author, name);
           const classInput =
             name === messageData.author ? `${classes.you}` : `${classes.other}`;
           return (
