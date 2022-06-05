@@ -27,10 +27,10 @@ function Chat({ socket, name, room }) {
 
   useEffect(() => {
     socket.on('receive', (data) => {
-      setMessageList((prevList) => [...prevList, data]);
+      setMessageList((prevList) => [...new Set([...prevList, data])]);
       console.log('receive', data);
     });
-  }, [socket]);
+  }, []);
 
   useEffect(() => {
     scrollMsgs.current?.scrollIntoView();

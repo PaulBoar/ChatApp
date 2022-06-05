@@ -32,10 +32,11 @@ io.on('connection', (socket) => {
   socket.on('send', (data) => {
     if (data.room === 'global' || data.room === '') {
       socket.to('global').emit('receive', data);
+      console.log(data)
       console.log(`GLOBAL`);
     } else  {
-      console.log(`${data.author} sent ${data.message} at ${data.date}`);
       socket.to(data.room).emit('receive', data);
+      console.log(`${data.author} sent ${data.message} at ${data.date}`);
     }
   });
 
